@@ -20,7 +20,6 @@ const [selected, setSelected] = useState(null);
                   <h3 className='title'> { dataItem.question } </h3>
                   <span>+</span>
                 </div>
-               
               )}) : 
             <div>GoodBye</div>
           }
