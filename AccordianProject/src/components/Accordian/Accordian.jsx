@@ -6,6 +6,12 @@ const Accordian = ({ data }) => {
 
 const [selected, setSelected] = useState(null);
 
+const handleSingleSelection = (e) => {
+
+  // neat way to apply an show/unshow functionality to a button/onclick !!!!
+    setSelected( e === selected ? null : e )
+}
+
 
   return (
 
@@ -16,9 +22,16 @@ const [selected, setSelected] = useState(null);
             data.map(dataItem => {
 
               return (
-                <div className='accordian__item'>
-                  <h3 className='title'> { dataItem.question } </h3>
+                <div className='accordian__item' key={ dataItem.id }>
+                  <div>
+                  <h3 className='title'onClick={ () => handleSingleSelection(dataItem.id) } > { dataItem.question } </h3>
                   <span>+</span>
+                  {
+                    selected === dataItem.id ? 
+                    <div className='content'>{ dataItem.answer }</div> 
+                    : null
+                  }
+                  </div>
                 </div>
               )}) : 
             <div>GoodBye</div>
